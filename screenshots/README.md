@@ -1,3 +1,11 @@
 # Screenshot Folder
 
-This folder contains the OWL ontology files developed using Protégé for the community library semantic search prototype.
+# Protégé Screenshots
+
+This folder contains screenshots demonstrating:
+- Class hierarchy design
+- Object and data properties
+- Individuals and assertions
+- Reasoner (HermiT) inferences
+- DL query execution
+
