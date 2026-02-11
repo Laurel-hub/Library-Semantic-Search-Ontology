@@ -1,0 +1,1596 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/laure/ontologies/2026/11/Library/"
+     xml:base="http://www.semanticweb.org/laure/ontologies/2026/11/Library/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:Library="http://www.semanticweb.org/laure/ontologies/2026/11/Library#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library">
+        <rdfs:comment xml:lang="en">This ontology is a prototype knowledge model designed to support an AI-powered search engine for a community-funded local library. It represents library resources (books and their physical copies) and key descriptive attributes such as author, genre, subject, language, audience/age range, format, accessibility features, availability status, and library branch location. The model is intended to improve search and retrieval by enabling structured queries and semantic reasoning (e.g., finding books by genre, language, audience, or availability at a specific branch). This prototype was implemented in Protégé as part of a knowledge representation and reasoning assessment and is designed for extension to larger catalogues and additional library services.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAccessibilityFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAccessibilityFeature">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+        <rdfs:comment xml:lang="en">The object property hasAccessibilityFeature links a specific copy to an accessibility characteristic such as braille, large print, or audio accessibility. Modelling this relationship at the copy level supports inclusive search and ensures that accessible editions of the same title can be discovered and requested accurately.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasAccessibilityFeature</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAgeRange -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAgeRange">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+        <rdfs:comment xml:lang="en">The object property hasAgeRange links a book to a more specific age range classification where finer audience targeting is required. It supports improved relevance and ensures that content can be retrieved in line with suitability for different developmental stages.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasAgeRange</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAudience -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAudience">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+        <rdfs:comment xml:lang="en">Links a book to its intended readership category. This supports age-appropriate discovery and allows users to filter results for children, teenagers, or adult audiences.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasAudience</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAuthor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAuthor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+        <rdfs:comment xml:lang="en">The object property hasAuthor links a book to the author responsible for the work. It supports bibliographic discovery by enabling queries such as retrieving all books written by a specific author and improves catalogue semantics by treating authorship as a formal relationship rather than plain text metadata.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasAuthor</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAvailabilityStatus -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasAvailabilityStatus">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+        <rdfs:comment xml:lang="en">The object property hasAvailabilityStatus links a copy to its current circulation state. It enables availability-aware search and allows users and systems to distinguish between copies that are available, on loan, reserved, or in other operational states.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasAvailabilityStatus</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasCopy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasCopy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <rdfs:comment xml:lang="en">Links a catalogue-level book to one or more specific copies held by the library. This relationship allows the model to represent circulation and holdings accurately, including scenarios where copies differ in availability, branch location, or accessibility features.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasCopy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasFormat -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasFormat">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+        <rdfs:comment xml:lang="en">The object property hasFormat links a copy or item to the medium through which it is provided, such as print, eBook, or audiobook. Representing format as an explicit relationship enables precise filtering by delivery mode and supports accessibility- and preference-aware searching.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasFormat</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasGenre -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasGenre">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Genre"/>
+        <rdfs:comment xml:lang="en">The object property hasGenre links a book to one or more genre classifications used for browsing and discovery. This supports semantic search by enabling users to retrieve books by recognised genre categories and strengthens catalogue consistency across the collection.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasGenre</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasLanguage -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasLanguage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+        <rdfs:comment xml:lang="en">Represents the primary language in which a book is written, expressed as a textual label. This property supports descriptive metadata and user-facing information rather than automated classification.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasLanguage</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasSubject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasSubject">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+        <rdfs:comment xml:lang="en">Links a book to the topic area it addresses. This enables concept-driven retrieval and improves search relevance by allowing topic-based filtering and structured discovery beyond keyword matching.</rdfs:comment>
+        <rdfs:label xml:lang="en">hasSubject</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#locatedAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#locatedAt">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch"/>
+        <rdfs:comment xml:lang="en">Links a copy to the library branch where it is held or can be accessed. This supports location-based discovery and enables queries that identify which branch currently holds an available copy of a requested book.</rdfs:comment>
+        <rdfs:label xml:lang="en">locatedAt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#barcodeID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#barcodeID">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Represents a unique barcode identifier assigned to an individual copy of a book by the library. This property is used for inventory management and operational tracking and is intended to uniquely distinguish physical or digital copies within the library system.</rdfs:comment>
+        <rdfs:label>barcodeID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#copyNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#copyNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Represents the internal copy number assigned to a specific instance of a book held by the library. This value is used to differentiate multiple copies of the same title and supports internal organisation rather than bibliographic description.</rdfs:comment>
+        <rdfs:label>copyNumber</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#hasTitle">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Represents the full title of a book as a human-readable string. This data property is used for bibliographic identification and display purposes, rather than for classification or reasoning, and applies at the level of the abstract book rather than individual copies.</rdfs:comment>
+        <rdfs:label>hasTitle</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#publicationYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#publicationYear">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Represents the year in which a book was first published, expressed as an integer value. This property supports bibliographic metadata and temporal analysis, and is associated with the book entity rather than its individual copies.</rdfs:comment>
+        <rdfs:label>publicationYear</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topDataProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topDataProperty">
+        <rdfs:comment xml:lang="en">Data properties in this ontology are used exclusively for literal metadata values and are not employed for logical classification. All reasoning and inference is performed using object properties and class axioms to preserve semantic clarity.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Illustrates adaptations or features that enhance access to library materials for users with diverse needs. These features describe the accessibility characteristics of individual copies, such as audio support, large print, or Braille, allowing the library system to provide inclusive access to information resources.</rdfs:comment>
+        <rdfs:label xml:lang="en">AccessibilityFeature</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChildAudience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Illustrates the intended readership group for a book, such as children, young adults, or adults. This classification supports age-appropriate access to library materials and assists users in discovering content suited to their needs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Represents an individual or entity responsible for the creation of one or more books in the library catalogue. Authors are linked to Book instances through authorship relationships, enabling users to search for works by a specific creator and supporting bibliographic organisation within the ontology.</rdfs:comment>
+        <rdfs:label xml:lang="en">Author</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">The AvailabilityStatus class represents the current circulation state of a copy within the library system. It captures whether an item is available, on loan, reserved, or undergoing processing, enabling users and librarians to track and manage access to library materials effectively.</rdfs:comment>
+        <rdfs:label xml:lang="en">AvailabilityStatus</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Biography -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Biography">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">The Book class represents a distinct bibliographic work within the library catalogue. It captures high-level, conceptual information about a title, including its authorship, genre, subject area, language, and intended audience. A Book does not represent a physical item itself; instead, it serves as an abstract description that may be associated with one or more Copies, each of which can be accessed, located, and borrowed independently within the library system.</rdfs:comment>
+        <rdfs:label xml:lang="en">Book</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChildAudience -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChildAudience">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Children -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Children">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ClimateChange -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ClimateChange">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Represents an individual physical or digital instance of a Book that is held by the library. Each Copy corresponds to a specific item that can be borrowed, reserved, or accessed by users, and is characterised by properties such as format, availability status, accessibility features, and library branch location. Modelling copies separately from books allows the ontology to capture real-world distinctions between multiple instances of the same title.</rdfs:comment>
+        <rdfs:label xml:lang="en">Copy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#DueSoon -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DueSoon">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#DyslexiaFriendlyFont -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DyslexiaFriendlyFont">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBook -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBook">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBookScreenReaderCompatible -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBookScreenReaderCompatible">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EarlyYears -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EarlyYears">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#English -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionBook -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionBook">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Represents the medium through which a book or copy is made available to users. Formats describe how content is delivered, such as print, electronic, or audio, and are used to distinguish between different modes of access for the same bibliographic work within the library system.</rdfs:comment>
+        <rdfs:label xml:lang="en">Format</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#French -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#French">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Genre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Genre">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">Represents the literary or thematic category to which a book belongs. Genres are used to classify books according to narrative style or subject focus, supporting browsing, discovery, and thematic organisation of the library collection.</rdfs:comment>
+        <rdfs:label xml:lang="en">Genre</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Health -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Health">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#History -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#History">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#InProcessing -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#InProcessing">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">The Language class represents the natural language in which a book is written. Associating books with their language supports multilingual cataloguing and enables users to search for materials in their preferred language.</rdfs:comment>
+        <rdfs:label xml:lang="en">Language</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargerPrint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargerPrint">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">The LibraryBranch class represents a physical branch or location within the library system where copies of books are stored and made available to users. Each branch functions as a point of access for borrowing and returning items, and supports the distribution of library resources across multiple locations.</rdfs:comment>
+        <rdfs:label xml:lang="en">LibraryBranch</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem">
+        <rdfs:comment xml:lang="en">The LibraryItem class represents a high-level abstraction for all entities managed within the library system. It serves as a common superclass for conceptual resources such as books and operational entities such as copies, formats, and availability statuses. By introducing this class, the ontology ensures semantic consistency and supports shared properties across different types of library-managed items.</rdfs:comment>
+        <rdfs:label xml:lang="en">LibraryItem</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#MentalHealth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#MentalHealth">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Book"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnOrder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnOrder">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Philosophy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Philosophy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#RaceAndEthnicity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#RaceAndEthnicity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Religion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Religion">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#SelfHelp -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#SelfHelp">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#StandardPrint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#StandardPrint">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryItem"/>
+        <rdfs:comment xml:lang="en">The Subject class represents the primary topical focus or thematic area addressed by a book. Subjects enable thematic indexing of library materials and support more precise information retrieval across the collection.</rdfs:comment>
+        <rdfs:label xml:lang="en">Subject</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Teenager -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Teenager">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligenceABriefHistory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligenceABriefHistory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#MichealWooldridge"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_ArtificialIntelligenceABriefHistory_1"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasSubject rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence"/>
+        <Library:hasTitle>Artificial Intelligence: A Brief History</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2024</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Biography -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Biography">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChildAudience -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChildAudience">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Audience"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Children -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Children">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChimamandaNgoziAdichie -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChimamandaNgoziAdichie">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ClimateChange -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ClimateChange">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NineteenEightyFour"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary"/>
+        <Library:barcodeID>NNEF-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NineteenEightyFour"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EastSideBranch"/>
+        <Library:barcodeID>NNEF-002</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_ArtificialIntelligenceABriefHistory_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_ArtificialIntelligenceABriefHistory_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligenceABriefHistory"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Ebook"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary"/>
+        <Library:barcodeID>AIBH-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HalfOfAYellowSun"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary"/>
+        <Library:barcodeID>HYS-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HalfOfAYellowSun"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EastSideBranch"/>
+        <Library:barcodeID>HYS-002</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HarryPotterAndThePhilosophersStone"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary"/>
+        <Library:barcodeID>HPPS-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HarryPotterAndThePhilosophersStone"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#WestSideBranch"/>
+        <Library:barcodeID>HPPS-002</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Sapiens"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#CentralLibrary"/>
+        <Library:barcodeID>SAP-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Sapiens"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#WestSideBranch"/>
+        <Library:barcodeID>SAP-002</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_WhyImNoLongerTalkingToWhitePeopleAboutRace_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_WhyImNoLongerTalkingToWhitePeopleAboutRace_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy"/>
+        <Library:hasAccessibilityFeature rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint"/>
+        <Library:hasAvailabilityStatus rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#WhyImNoLongerTalkingToWhitePeopleAboutRace"/>
+        <Library:hasFormat rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        <Library:locatedAt rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EastSideBranch"/>
+        <Library:barcodeID>WILTWPAR-001</Library:barcodeID>
+        <Library:copyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</Library:copyNumber>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#DueSoon -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DueSoon">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#DyslexiaFriendlyFont -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DyslexiaFriendlyFont">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBookScreenReaderCompatible -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBookScreenReaderCompatible">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EarlyYears -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EarlyYears">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#EastSideBranch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EastSideBranch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Ebook -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Ebook">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#English -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#French -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#French">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#GeorgeOrwell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#GeorgeOrwell">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#HalfOfAYellowSun -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HalfOfAYellowSun">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ChimamandaNgoziAdichie"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_1"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HalfOfAYellowSun_2"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasSubject rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory"/>
+        <Library:hasTitle>Half of a Yellow Sun</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2006</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#HarryPotterAndThePhilosophersStone -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HarryPotterAndThePhilosophersStone">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#JKRowling"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_1"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_HarryPotterAndThePhilosophersStone_2"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasTitle>Harry Potter and the Philospher&apos;s Stone</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1997</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Health -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Health">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#History -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#History">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#InProcessing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#InProcessing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#JKRowling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#JKRowling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargePrint">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AccessibilityFeature"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#MentalHealth -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#MentalHealth">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Subject"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#MichealWooldridge -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#MichealWooldridge">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#NineteenEightyFour -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NineteenEightyFour">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#GeorgeOrwell"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_1"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_1984_2"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasTitle>1984</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1949</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnOrder -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnOrder">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Philosophy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Philosophy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Format"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#RaceAndEthnicity -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#RaceAndEthnicity">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Religion -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Religion">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ReniEddoLodge -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ReniEddoLodge">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AvailabilityStatus"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Sapiens -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Sapiens">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YuvalNoahHarari"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_1"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_Sapiens_2"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasSubject rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence"/>
+        <Library:hasTitle>Sapiens: A Brief History of Humankind</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2011</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#SelfHelp -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#SelfHelp">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Teenager -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Teenager">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AgeRange"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#WestSideBranch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#WestSideBranch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LibraryBranch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#WhyImNoLongerTalkingToWhitePeopleAboutRace -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#WhyImNoLongerTalkingToWhitePeopleAboutRace">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionBook"/>
+        <Library:hasAudience rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AdultAudience"/>
+        <Library:hasAuthor rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ReniEddoLodge"/>
+        <Library:hasCopy rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Copy_WhyImNoLongerTalkingToWhitePeopleAboutRace_1"/>
+        <Library:hasGenre rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#RaceAndEthnicity"/>
+        <Library:hasLanguage rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+        <Library:hasTitle>Why I&apos;m No Longer Talking to White People About Race</Library:hasTitle>
+        <Library:publicationYear rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2017</Library:publicationYear>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Language"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/laure/ontologies/2026/11/Library#YuvalNoahHarari -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YuvalNoahHarari">
+        <rdf:type rdf:resource="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Adult"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Children"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EarlyYears"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#French"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Teenager"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ArtificialIntelligence"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#BlackHistory"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ClimateChange"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#MentalHealth"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DyslexiaFriendlyFont"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBookScreenReaderCompatible"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargerPrint"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#StandardPrint"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioAccessible"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Braille"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#LargerPrint"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#FictionGenre"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#NonFictionGenre"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#AudioBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#EBook"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Print"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Available"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#DueSoon"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#InProcessing"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnLoan"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#OnOrder"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Reserved"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Biography"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Health"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#History"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Philosophy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Religion"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Science"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#SelfHelp"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Technology"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Chinese"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#English"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#French"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Spanish"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Yoruba"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Fantasy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#HistoricalFiction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Mystery"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Romance"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#ScienceFiction"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#Thriller"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/laure/ontologies/2026/11/Library#YoungAdult"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
